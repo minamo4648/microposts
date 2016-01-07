@@ -6,6 +6,12 @@ class UsersController < ApplicationController
     
     @user = User.find(params[:id])
     
+    if @user != current_user
+    
+      redirect_to root_path, alert: '送信されたデータが不正です。'
+    
+    end
+    
     if @user.update(user_params)
       flash[:success] = "Update succeeded"
       redirect_to user_path
