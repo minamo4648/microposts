@@ -1,0 +1,13 @@
+<h1><%= link_to @this_user.name, @this_user %> follows </h1>
+
+<div class="center-block panel panel-info" style="width: 75%; height: 350px;">  
+
+  <div class="panel-body" style="overflow: auto; height: 350px;">
+    
+  <% @users.each do |user| %>
+    <%= render partial: 'users/listup_user_full', locals: { user: user } %>
+  <% end %>
+
+  </div>
+
+</div>

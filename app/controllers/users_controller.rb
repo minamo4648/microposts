@@ -38,6 +38,19 @@ before_action :authenticate_user!, only: [:edit, :update]
     
   end
   
+  def followings
+
+    @this_user = User.find(params[:id])
+    @users = User.find(params[:id]).following_users
+  
+  end
+  
+  def followers
+    
+    @this_user = User.find(params[:id])
+    @users = User.find(params[:id]).follower_users
+  
+  end
 
   private
 
@@ -59,5 +72,7 @@ before_action :authenticate_user!, only: [:edit, :update]
     
     end
   
+
+
 
 end

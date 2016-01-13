@@ -37,3 +37,29 @@
   </table>
   </div>
   
+     <%#= render 'profile' if logged_in? %><br>
+     <%#= @user.following_users.inspect %>
+
+
+
+  <div class="panel panel-info" style="width: 30%; height: 250px;">  
+    <div class="panel-heading">
+      This accout follows: <br>
+      <%= link_to "more", followings_user_path %>
+    </div>
+    <div class="panel-body" style="overflow: auto; height: 200px;">
+      <%#= render @user.following_users %>
+      <%= render partial: 'users/listup_user', collection: @user.following_users %>
+    </div>
+  </div>
+  
+    <div class="panel panel-info" style="width: 30%; height: 250px;">  
+    <div class="panel-heading">
+      Follows this account: <br>
+      <%= link_to "more", followers_user_path %>
+    </div>
+    <div class="panel-body" style="overflow: auto; height: 200px;">
+      <%#= render @user.following_users %>
+      <%= render partial: 'users/listup_user', collection: @user.follower_users %>
+    </div>
+  </div>

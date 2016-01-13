@@ -1,0 +1,11 @@
+  
+    <%= link_to gravatar_for(@user, size: 50), @user %>
+    <span class="user"><%= link_to @user.name, @user %> &nbsp;from <%= @user.region %>
+    <%= current_user.following_relationships.find_by(follower_id: @user.id).inspect %>
+    <%# = form_for(current_user.following_relationships.find_by(followed_id: @user.id),
+    #          html: { method: :delete },
+    #          remote: true) do |f| %>
+         <%# = f.submit "Unfollow", class: "btn btn-sm" %>
+     <%# end %> <br />
+     <!-- <span class="profile"><%# @other_user.profile %></span> -->
+    </span>
