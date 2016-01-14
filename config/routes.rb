@@ -14,10 +14,17 @@ Rails.application.routes.draw do
 
       get 'followings'
       get 'followers'
+    
+    end
+    
+    collection do
+      
+      get 'list'
+    
+    end
 
   end
 
-end
 
   resources :sessions, only: [:new, :create, :destroy]
 

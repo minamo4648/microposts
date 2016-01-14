@@ -6,7 +6,50 @@
         <%= @user.name %>
       </h1>
     </section>
+
+    <table class="table col-md-12">
+      <tbody>
+        <tr>
+          <td class="col-md-1">email:</td>
+          <td class="col-md-11"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td class="col-md-1">region:</td>
+          <td class="col-md-11"><%= @user.region %></td>
+        </tr>
+        <tr>
+          <td class="col-md-1">profile:</td>
+          <td class="col-md-11"><%= @user.profile %></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="panel panel-info col-md-12" style="height: 250px;">  
+      <div class="panel-heading">
+        This accout follows: <br>
+        <%= link_to "more", followings_user_path %>
+      </div>
+      <div class="panel-body" style="overflow: auto; height: 200px;">
+        <%#= render @user.following_users %>
+        <%= render partial: 'users/listup_user', collection: @user.following_users %>
+      </div>
+    </div>
+  
+    <div class="panel panel-info col-md-12" style="height: 250px;">  
+      <div class="panel-heading">
+        Follows this account: <br>
+        <%= link_to "more", followers_user_path %>
+      </div>
+      <div class="panel-body" style="overflow: auto; height: 200px;">
+        <%#= render @user.following_users %>
+        <%= render partial: 'users/listup_user', collection: @user.follower_users %>
+      </div>
+    </div>
+  
   </aside>
+
+ <div  class="container">
+
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
@@ -16,50 +59,7 @@
       </ol>
     <% end %>
   </div>
+
 </div>
 
- <div  class="container">
-    <table class="table">
-    <tbody>
-      <tr>
-        <td class="col-md-1">email:</td>
-        <td class="col-md-11"><%= @user.email %></td>
-      </tr>
-      <tr>
-        <td class="col-md-1">region:</td>
-        <td class="col-md-11"><%= @user.region %></td>
-      </tr>
-      <tr>
-        <td class="col-md-1">profile:</td>
-        <td class="col-md-11"><%= @user.profile %></td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-  
-     <%#= render 'profile' if logged_in? %><br>
-     <%#= @user.following_users.inspect %>
-
-
-
-  <div class="panel panel-info" style="width: 30%; height: 250px;">  
-    <div class="panel-heading">
-      This accout follows: <br>
-      <%= link_to "more", followings_user_path %>
-    </div>
-    <div class="panel-body" style="overflow: auto; height: 200px;">
-      <%#= render @user.following_users %>
-      <%= render partial: 'users/listup_user', collection: @user.following_users %>
-    </div>
-  </div>
-  
-    <div class="panel panel-info" style="width: 30%; height: 250px;">  
-    <div class="panel-heading">
-      Follows this account: <br>
-      <%= link_to "more", followers_user_path %>
-    </div>
-    <div class="panel-body" style="overflow: auto; height: 200px;">
-      <%#= render @user.following_users %>
-      <%= render partial: 'users/listup_user', collection: @user.follower_users %>
-    </div>
-  </div>
+</div>

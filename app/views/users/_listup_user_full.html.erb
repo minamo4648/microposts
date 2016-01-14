@@ -1,6 +1,12 @@
 <%= link_to gravatar_for(user, size: 50), user %>
-<span class="user"><%= link_to user.name, user %> &nbsp;
-from <%= user.region %></span>
+<span class="user"><%= link_to user.name, user %> 
+
+    <% if @this_user.following?(user) && user.following?(@this_user) %>
+      <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+    <% end %>
+    
+&nbsp; from <%= user.region %></span>
+
 <br>
 <%= user.profile %>
 <br><br>

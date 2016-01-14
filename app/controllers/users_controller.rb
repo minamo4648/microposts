@@ -51,6 +51,10 @@ before_action :authenticate_user!, only: [:edit, :update]
     @users = User.find(params[:id]).follower_users
   
   end
+  
+  def list
+    @users = User.page(params[:page]).per(10).order(:id)
+  end
 
   private
 
