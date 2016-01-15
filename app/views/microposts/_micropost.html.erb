@@ -7,6 +7,7 @@
     <% if current_user == micropost.user %>
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
+      <%= link_to 'SOUL!', soulcreate_user_path(micropost.id) %>
     <% end %>
   </span>
 </li>
