@@ -6,7 +6,7 @@
     <tr>
       <th>Name</th>
       <th>region</th>
-      <th>profile</th>
+      <th></th>
   </thead>
 
   <tbody>
@@ -14,7 +14,18 @@
       <tr>
         <td><%= link_to user.name, user %></td>
         <td><%= user.region %></td>
-        <td><%= user.profile %></td>
+        <td>
+          <% if user.soul.present? %>
+            <%= Micropost.find_by(id: user.soul).content[0,50] %>
+            
+              <% if Micropost.find_by(id: user.soul).content.length > 50 %>
+                ...
+              <% end %>
+            
+          <% else %>
+            <%= user.profile %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
       get 'followings'
       get 'followers'
       get 'soulcreate'
-    
+      get 'unsoul'
+      
     end
     
     collection do

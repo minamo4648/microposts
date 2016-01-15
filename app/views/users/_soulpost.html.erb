@@ -1,7 +1,10 @@
 <% if @soulpost.present? %>
 
-<div class="soulpost">
+<div class="soulpost mp">
     <h3><%= @soulpost.content %></h3>
+    <% if @user == current_user %>
+        <%= link_to 'unsoul', unsoul_user_path(id=current_user.id) %>
+    <% end %>
 </div>
 
 <% end %>

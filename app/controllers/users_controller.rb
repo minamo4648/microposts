@@ -17,7 +17,7 @@ before_action :authenticate_user!, only: [:edit, :update]
 
   def show # 追加
    @user = User.find(params[:id])
-   soulpost = current_user.soul
+   soulpost = @user.soul
    @soulpost = Micropost.find_by(id: soulpost) # find の場合は数字だけでidをとってくれる
 
    @microposts = @user.microposts.order(created_at: :desc)
@@ -61,6 +61,11 @@ before_action :authenticate_user!, only: [:edit, :update]
   
   def soulcreate
     current_user.update(soul: params[:id])
+    redirect_to :back
+  end
+  
+  def unsoul
+    current_user.update(soul: nil)
     redirect_to :back
   end
 
