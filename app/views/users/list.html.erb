@@ -15,16 +15,9 @@
         <td><%= link_to user.name, user %></td>
         <td><%= user.region %></td>
         <td>
-          <% if user.soul.present? %>
-            <%= Micropost.find_by(id: user.soul).content[0,50] %>
+          
+            <%= intro(user.id) %>
             
-              <% if Micropost.find_by(id: user.soul).content.length > 50 %>
-                ...
-              <% end %>
-            
-          <% else %>
-            <%= user.profile %>
-          <% end %>
         </td>
       </tr>
     <% end %>

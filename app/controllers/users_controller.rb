@@ -57,6 +57,7 @@ before_action :authenticate_user!, only: [:edit, :update]
   
   def list
     @users = User.page(params[:page]).per(10).order(:id)
+
   end
   
   def soulcreate
